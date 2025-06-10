@@ -70,3 +70,45 @@ POST {{host}}/auth/login
 }
 ```
 
+
+# Extra
+
+#### Command 1
+
+## Part 2 - User-Secrets
+
+```
+dotnet user-secrets init --project .\BuberDinner.Api
+```
+- Adds a <UserSecretsId> to your .csproj file (BuberDinner.Api.csproj).
+
+- This ID links your project to a secrets file stored on your machine, not in your codebase.
+
+- The ID looks like this: 6b1db5f2-41f7-49e2-9d69-a9c7005d7c31.
+
+- It enables user secrets for this specific project.
+
+#### Command 2
+
+```
+dotnet user-secrets set --project .\BuberDinner.Api "JwtSettings:Secret" "super-secret-key-from-user"
+```
+- Sets a secret value using the key "JwtSettings:Secret" and value "super-secret-key-from-user".
+
+- The format is like adding something to appsettings.json:
+```
+"JwtSettings": {
+  "Secret": "super-secret-key-from-user-secrets"
+}
+```
+
+- This secret is stored in a secure, local secrets file (not visible in the code).
+
+#### Command 3
+
+```
+dotnet user-secrets list --project .\BuberDinner.Api
+```
+
+- Lists all the secrets associated with this project.
+
