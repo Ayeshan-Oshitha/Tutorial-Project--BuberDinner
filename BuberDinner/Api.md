@@ -73,9 +73,11 @@ POST {{host}}/auth/login
 
 # Extra
 
-#### Command 1
+## Part 2  - Generating JWT Token
 
-## Part 2 - User-Secrets
+### User-Secrets
+
+##### Command 1
 
 ```
 dotnet user-secrets init --project .\BuberDinner.Api
@@ -88,7 +90,7 @@ dotnet user-secrets init --project .\BuberDinner.Api
 
 - It enables user secrets for this specific project.
 
-#### Command 2
+##### Command 2
 
 ```
 dotnet user-secrets set --project .\BuberDinner.Api "JwtSettings:Secret" "super-secret-key-from-user"
@@ -104,11 +106,21 @@ dotnet user-secrets set --project .\BuberDinner.Api "JwtSettings:Secret" "super-
 
 - This secret is stored in a secure, local secrets file (not visible in the code).
 
-#### Command 3
+##### Command 3
 
 ```
 dotnet user-secrets list --project .\BuberDinner.Api
 ```
 
 - Lists all the secrets associated with this project.
+
+
+## Part 3 - Repository Pattern
+
+What is repository pattern ?
+
+- Microsoft - Repositories are classes or components that ancapsulates the logic required to access data sources.
+
+- Martin Fowler - Mediated between the domain and data mapping layers using a collection-like interface for accessing domain objects.
+
 
