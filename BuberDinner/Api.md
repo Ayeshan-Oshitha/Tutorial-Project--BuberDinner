@@ -122,5 +122,3 @@ What is repository pattern ?
 - Microsoft - Repositories are classes or components that ancapsulates the logic required to access data sources.
 
 - Martin Fowler - Mediated between the domain and data mapping layers using a collection-like interface for accessing domain objects.
-
-
