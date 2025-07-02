@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace BuberDinner.Api.Filters
@@ -9,12 +10,15 @@ namespace BuberDinner.Api.Filters
         {
             var exception = context.Exception;
 
-           var errorResult = new { error = "An unexpected error occured while processing your request" };
+            var problemDetails = new ProblemDetails
+            {
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1",
+                Title = "An unexpected error occured while processing your request",
+                Status = (int)HttpStatusCode.InternalServerError
+            };
 
-           context.Result = new ObjectResult(errorResult)
-           {
-               StatusCode = 500
-           };
+
+            context.Result = new ObjectResult(problemDetails);
            
             context.ExceptionHandled = true;
         }
